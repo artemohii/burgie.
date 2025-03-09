@@ -313,7 +313,7 @@ html {
 
 @font-face {
   font-family: 'Bauhaus';
-  src: url("../font/BauhausStd-Bold.woff2") format("woff2"), url("../font/BauhausStd-Bold.woff") format("woff");
+  src: url("./font/BauhausStd-Bold.woff2") format("woff2"), url("./font/BauhausStd-Bold.woff") format("woff");
   font-weight: normal;
   font-style: normal; }
 body {
