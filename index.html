@@ -47,7 +47,7 @@
 						<a href="#kontakt" class="header-nav__a" >Kontakt</a>
 					</li>
 					<li class="header-nav__li">
-						<a href="https://wolt.com/en/deu/berlin/restaurant/burgie-berlin" class="header-nav__a _active">Jetzt Bestellen</a>
+						<a href="https://wolt.com/en/deu/berlin/restaurant/burgie-berlin" class="header-nav__a _active" target="_blank">Jetzt Bestellen</a>
 					</li>
 				</ul>
 				<span id="icon-close" onclick="navToggle()" class="material-icons">
@@ -63,9 +63,143 @@
 					<h2>Willkommen bei Burgie</h2>
 					<p>Entdecken Sie unsere köstlichen Burger, handgefertigt mit frischen, lokalen Zutaten. Jeder Burger erzählt seine eigene Geschichte von Qualität und Geschmack.</p>
 				</div>
-				<div class="hero-section__image"></div>
+				<div class="hero-section__image">
+					<div class="hero-image-part part4" style="background-image: url('../img/cutsmach/4.png')"></div>
+					<div class="hero-image-part part3" style="background-image: url('../img/cutsmach/3.png')"></div>
+					<div class="hero-image-part part2" style="background-image: url('../img/cutsmach/2.png')"></div>
+					<div class="hero-image-part part1" style="background-image: url('../img/cutsmach/1.png')"></div>
+				</div>
+			<style>
+				.hero-section__image {
+					cursor: default;
+					position: relative;
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					justify-content: center;
+					height: 500px;
+					overflow: hidden;
+					transition: transform 0.3s ease;
+					transform: translateX(60px);
+					&:hover {
+						transform: translateX(60px) scale(1.2);
+					}
+				}
+
+				.hero-image-part {
+					position: absolute;
+					width: 100%;
+					height: 500px;
+					background-size: contain;
+					background-repeat: no-repeat;
+					background-position: center;
+					transform: translateY(-100vh);
+					animation: dropImage 1s ease forwards;
+				}
+
+				.part1 {
+					background-size: 120%;
+					animation-delay: 0s;
+					z-index: 1;
+						top: -60px;
+				}
+
+				.part2 {
+						background-size: 120%;
+
+					animation-delay: 0.2s; 
+					z-index: 1;
+					top: -50px;
+				}
+
+				.part3 {
+					background-size: 120%;
+
+					animation-delay: 0.4s;
+					z-index: 1;
+					top: -40px;
+				}
+
+				.part4 {
+					background-size: 120%;
+
+					animation-delay: 0.6s;
+					z-index: 1;
+					top: -30px;
+				}
+				
+
+				@keyframes dropImage {
+					from {
+						transform: translateY(-100vh);
+					}
+					to {
+						transform: translateY(0);
+					}
+				}
+
+				@media (max-width: 768px) {
+					.hero-section {
+    height: 100vh;
+  }
+  .hero-section__container {
+    flex-direction: column;
+    text-align: center;
+  margin: 70px auto 0;
+	padding-bottom: 0;
+  /* gap: 50px; */
+
+  }
+					.hero-section__image {
+						margin-bottom: -200px;
+						width: 100%;
+						/* height: 300px; */
+						transform: scale(0.8);
+						/* margin-left: -50px;  */
+					}
+
+					.hero-image-part {
+						/* height: 120px; */
+						transform: translateY(-100vh); /* Start offscreen */
+						opacity: 0;
+						position: absolute;
+						background-position: center;
+						background-size: contain;
+					}
+
+					.part1 {
+						top: -120px;
+						animation: mobileDropImage 0.5s ease forwards;
+					}
+
+					.part2 {
+						top: -120px;
+						animation: mobileDropImage 0.5s ease 0.2s forwards;
+					}
+
+					.part3 {
+						top: -120px;
+						animation: mobileDropImage 0.5s ease 0.4s forwards;
+					}
+
+					.part4 {
+						top: -120px;
+						animation: mobileDropImage 0.5s ease 0.6s forwards;
+					}
+
+					@keyframes mobileDropImage {
+						from {
+							opacity: 0;
+							transform: translateY(-50px);
+						}
+						to {
+							opacity: 1;
+							transform: translateY(0);
+						}
+					}
+				}
+			</style>
 			</div>
-			<!-- menu -->
 		</section>
 		<!-- menu -->
 		<section class="menu-section" id="menu">
@@ -156,7 +290,6 @@
 							<img src="../img/icons/vegan.png" alt="Vegan" style="position: absolute; width: 30px; height: 30px; bottom: 10px; right: 10px;">
 						</div>
 						<h3 class="menu-item__title">Crunchy Fries</h3>
->>>>>>> 066bc4e (2)
 					</div>
 				</div>
 			</div>
@@ -164,56 +297,6 @@
 		<div class="menu-section__more">
 			<button class="menu-section__more-btn" id="showMoreMenu">Mehr anzeigen</button>
 		</div>
-		<style>
-			.menu-section__more {
-				display: none;
-			}
-			@media (max-width: 768px) {
-				.menu-section__more {
-					display: block;
-				}
-				.menu-item:nth-child(n+4) {
-					display: none;
-				}
-				.menu-item.show {
-					display: block;
-				}
-				.menu-section__more {
-					text-align: center;
-					margin: 30px 0	30px;
-				}
-				.menu-section__more-btn {
-					background: #FBFADA;
-					color: #12372A;
-					border: none;
-					padding: 10px 20px;
-					border-radius: 5px;
-					cursor: pointer;
-					font-size: 16px;
-					transition: 0.3s;
-				}
-				.menu-section__more-btn:hover {
-					background: #12372A;
-					color: #FBFADA;
-				}
-			}
-		</style>
-		<script>
-			document.getElementById('showMoreMenu').addEventListener('click', function() {
-				const hiddenItems = document.querySelectorAll('.menu-item:nth-child(n+4)');
-				hiddenItems.forEach((item, index) => {
-					item.style.opacity = '0';
-					item.style.transform = 'translateY(20px)';
-					item.classList.add('show');
-					setTimeout(() => {
-						item.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-						item.style.opacity = '1';
-						item.style.transform = 'translateY(0)';
-					}, index * 300);
-				});
-				this.style.display = 'none';
-			});
-		</script>
 		<!-- menu end -->
 	</div>
 
@@ -262,6 +345,32 @@
 		<section class="reviews-section" id="feedback">
 			<div class="reviews-section__container">
 				<h2 class="reviews-section__title" data-aos="fade-up">Bewertungen</h2>
+				<div class="reviews-slider" data-aos="fade-up" data-aos-delay="100">
+					<div class="reviews-slider__container">
+						<div class="reviews-slide">
+							<img src="../img/feedback/1.jpg" alt="Customer Feedback 1">
+						</div>
+						<div class="reviews-slide">
+							<img src="../img/feedback/2.jpg" alt="Customer Feedback 2">
+						</div>
+						<div class="reviews-slide">
+							<img src="../img/feedback/3.jpg" alt="Customer Feedback 3">
+						</div>
+						<div class="reviews-slide">
+							<img src="../img/feedback/4.jpg" alt="Customer Feedback 4">
+						</div>
+						<div class="reviews-slide">
+							<img src="../img/feedback/5.jpg" alt="Customer Feedback 5">
+						</div>
+						<div class="reviews-slide">
+							<img src="../img/feedback/6.jpg" alt="Customer Feedback 6">
+						</div>
+					</div>
+					<div class="reviews-slider__dots"></div>
+				</div>
+
+				
+				<!-- <h2 class="reviews-section__title" data-aos="fade-up">Bewertungen</h2>
 				<div class="reviews-section__grid">
 					<div class="review-item" data-aos="fade-up" data-aos-delay="100">
 						<div class="review-item__stars">★★★★★</div>
@@ -278,7 +387,7 @@
 						<p class="review-item__text">"Moderne Atmosphäre, freundliches Personal und köstliche Burger. Was will man mehr?"</p>
 						<p class="review-item__author">- Lisa M.</p>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</section>
 
@@ -287,7 +396,7 @@
 			<div class="social-section__container">
 				<h2 class="social-section__title" data-aos="fade-up">Folge uns</h2>
 				<div class="social-section__links" data-aos="fade-up" data-aos-delay="100">
-					<a href="#" class="social-link">
+					<a href="https://www.instagram.com/" class="social-link" target="_blank">
 						
 
 						<img src="../img/icons/instagram.svg" alt="Instagram">
@@ -311,53 +420,10 @@
 			</svg>
 		</button>
 
-		<style>
-			.scroll-to-top {
-				position: fixed;
-				bottom: 30px;
-				right: 30px;
-				width: 50px;
-				height: 50px;
-				background: rgba(213, 206, 163, 0.2);
-				border: 2px solid #D5CEA3;
-				border-radius: 50%;
-				cursor: pointer;
-				display: none;
-				justify-content: center;
-				align-items: center;
-				color: #D5CEA3;
-				transition: all 0.3s ease;
-				backdrop-filter: blur(5px);
-				z-index: 1000;
-			}
-
-			.scroll-to-top:hover {
-				background: rgba(213, 206, 163, 0.3);
-				transform: translateY(-5px);
-			}
-
-			.scroll-to-top.visible {
-				display: flex;
-			}
-		</style>
+		
 
 		<script>
-			const scrollToTopBtn = document.getElementById('scrollToTop');
-
-			window.addEventListener('scroll', () => {
-				if (window.pageYOffset > 300) {
-					scrollToTopBtn.classList.add('visible');
-				} else {
-					scrollToTopBtn.classList.remove('visible');
-				}
-			});
-
-			scrollToTopBtn.addEventListener('click', () => {
-				window.scrollTo({
-					top: 0,
-					behavior: 'smooth'
-				});
-			});
+			
 		</script>
 
 		<!-- Footer -->
@@ -387,249 +453,7 @@
 		</footer>
 		<!-- artem ohii -->
 		</div>
-		<style>
-			/* About Section */
-			.about-section {
-				cursor: default;
-				padding: 60px 0;
-				/* background: $color-primary; */
-				background:  linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("./img/mafe.jpg") no-repeat center center;
-				/* filter: brightness(50%); */
-				background-size: cover;
-				background-attachment: fixed;
-			background-position: center 10%;
-
-			}
-
-			.about-section__container {
-				max-width: 1200px;
-				margin: 0 auto;
-				padding: 20px;
-				/* background-color: rgba(30, 30, 30, 0.9	); */
-
-			}
-
-			.about-section__title {
-				
-				text-align: center;
-				font-size: 3rem;
-				color: #D5CEA3;
-				margin-bottom: 40px;
-			}
-
-			.about-section__content {
-				color: #D5CEA3;
-				line-height: 1.6;
-				max-width: 800px;
-				margin: 0 auto;
-				font-size: 1.5rem;
-			}
-
-			.about-section__content p {
-				margin-bottom: 20px;
-			}
-
-			/* Locations Section */
-			.locations-section {
-				padding: 60px 0;
-				background: $color-primary;
-			}
-
-			.locations-section__container {
-				max-width: 1200px;
-				margin: 0 auto;
-				padding: 0 20px;
-			}
-
-			.locations-section__title {
-				text-align: center;
-				font-size: 2.5rem;
-				color: #D5CEA3;
-				margin-bottom: 40px;
-			}
-
-			.locations-section__map {
-				margin-bottom: 40px;
-			}
-
-			.locations-section__list {
-				display: flex;
-				justify-content: center;
-				gap: 40px;
-				flex-wrap: wrap;
-			}
-
-			.location-item {
-				background: rgba(26, 18, 11, 0.5);
-				padding: 20px;
-				border-radius: 8px;
-				text-align: center;
-				color: #D5CEA3;
-			}
-
-			.location-item h3 {
-				margin-bottom: 10px;
-				font-size: 1.5rem;
-			}
-
-			/* Reviews Section */
-			.reviews-section {
-				padding: 60px 0;
-				background: $color-primary;
-			}
-
-			.reviews-section__container {
-				max-width: 1200px;
-				margin: 0 auto;
-				padding: 0 20px;
-			}
-
-			.reviews-section__title {
-				text-align: center;
-				font-size: 2.5rem;
-				color: #D5CEA3;
-				margin-bottom: 40px;
-			}
-
-			.reviews-section__grid {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-				gap: 30px;
-			}
-
-			.review-item {
-				background: rgba(26, 18, 11, 0.5);
-				padding: 20px;
-				border-radius: 8px;
-				color: #D5CEA3;
-			}
-
-			.review-item__stars {
-				color: gold;
-				margin-bottom: 10px;
-			}
-
-			.review-item__text {
-				font-style: italic;
-				margin-bottom: 10px;
-			}
-
-			/* Social Section */
-			.social-section {
-				padding: 60px 0;
-				background: $color-primary;
-			}
-
-			.social-section__container {
-				max-width: 1200px;
-				margin: 0 auto;
-				padding: 0 20px;
-				text-align: center;
-			}
-
-			.social-section__title {
-				font-size: 2.5rem;
-				color: #D5CEA3;
-				margin-bottom: 40px;
-			}
-
-			.social-section__links {
-				display: flex;
-				justify-content: center;
-				gap: 30px;
-			}
-
-			.social-link {
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				color: #D5CEA3;
-				text-decoration: none;
-				transition: transform 0.3s ease;
-			}
-
-			.social-link:hover {
-				transform: translateY(-5px);
-			}
-
-			.social-link img {
-				width: 40px;
-				height: 40px;
-				margin-bottom: 10px;
-			}
-
-
-
-			/* Footer */
-			.footer {
-				background: $color-primary;
-				padding: 60px 0 20px;
-				color: #D5CEA3;
-			}
-
-			.footer__container {
-				max-width: 1200px;
-				margin: 0 auto;
-				padding: 0 20px;
-			}
-
-			.footer__content {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-				gap: 40px;
-				margin-bottom: 40px;
-			}
-
-			.footer__column h3 {
-				margin-bottom: 20px;
-				font-size: 1.2rem;
-			}
-
-			.footer__column a {
-				color: #D5CEA3;
-				text-decoration: none;
-				display: block;
-				margin-bottom: 10px;
-			}
-
-			.footer__column a:hover {
-				text-decoration: underline;
-			}
-
-			.footer__bottom {
-				text-align: center;
-				padding-top: 20px;
-				border-top: 1px solid rgba(213, 206, 163, 0.2);
-			}
-
-			@media (max-width: 768px) {
-				.locations-section__list {
-					flex-direction: column;
-					align-items: center;
-				}
-
-				.location-item {
-					width: 100%;
-					max-width: 300px;
-				}
-
-				.social-section__links {
-					flex-direction: column;
-					align-items: center;
-				}
-
-				.footer__content {
-					grid-template-columns: 1fr;
-					text-align: center;
-				}
-			}
-		</style>
-
-
-
-
-
-
+		
 
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
