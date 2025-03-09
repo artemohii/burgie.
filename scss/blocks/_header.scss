@@ -1,0 +1,101 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba($color-primary, 0.9);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  padding: 23px 40px;
+  width: 100%;
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1160px;
+    padding: 0 20px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  &__logo {
+    @include text($font, 700, 42px, 33px, $color-white);
+  }
+  &__burger {
+    display: none;
+    @include desktop-small {
+      display: block;
+      color: $color-beige;
+    }
+  }
+}
+.header-nav {
+  .material-icons {
+    color: $color-beige;
+    display: none;
+    @include desktop-small {
+      display: block;
+      position: absolute;
+      top: 40px;
+      right: 20px;
+    }
+  }
+  &__ul {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__a {
+    @include text($font, 400, 16px, 19px, $color-white);
+    @include text($font, 400, 22px, 19px, $color-white);
+    padding: 10px;
+    transition: $transition;
+    @include desktop-small {
+      color: $color-white;
+      
+    }
+
+    &._active {
+      border: 1px solid $color-white;
+      border-radius: 11px;
+      &:hover {
+        color :$color-body;
+        background: $color-beige;
+      }
+    }
+    &:hover {
+      color: $color-beige;
+    }
+  }
+  @include desktop-small {
+    position: fixed;
+    z-index: 9;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    // background: rgba(0, 0, 0, 0.8);
+    background-color: rgba(30, 30, 30, 0.9);
+    transform: translateX(-150%);
+    transition: $transition;
+    .header-nav__ul {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+    .header-nav__a {
+      font-size: 18px;
+      color: $color-beige;
+    }
+  }
+  &._active {
+    transform: translateX(0);
+  }
+}
